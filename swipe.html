@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pause&Pulse - Spot the Red Flag</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F5FB;
+            overflow: hidden;
+        }
+
+        .brand-purple {
+            color: #5D43DA;
+        }
+
+        .bg-brand-purple {
+            background-color: #5D43DA;
+        }
+
+        .bg-brand-purple-light {
+            background-color: #F0EDFF;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Smooth custom transition physics for the card swipe deck */
+        .swipe-card {
+            touch-action: none;
+            transition: transform 0.15s ease-out, opacity 0.15s ease-out, box-shadow 0.15s ease-out;
+        }
+
+        .swipe-card.dragging {
+            transition: none;
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <!-- Mobile Device Frame Container -->
+    <div
+        class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
+
+        <!-- Status Bar Mimic -->
+        <div class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10">
+            <span>9:41</span>
+            <div class="flex items-center space-x-1.5">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full text-base"></i>
+            </div>
+        </div>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 px-5 pb-6 pt-2 flex flex-col justify-between no-scrollbar relative overflow-hidden">
+
+            <!-- Top Header & Back Navigation -->
+            <div class="flex justify-between items-center">
+                <a href="spotter.html"
+                    class="w-9 h-9 bg-white rounded-full flex justify-center items-center shadow-sm border border-purple-500/10 text-gray-600">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </a>
+                <span class="text-sm font-bold text-gray-700">Swipe Mode</span>
+                <div class="bg-purple-50 px-3 py-1 rounded-full border border-purple-100 flex items-center space-x-1">
+                    <span class="text-xs font-bold brand-purple" id="scoreDisplay">Score: 0/3</span>
+                </div>
+            </div>
+
+            <!-- Swipe Instructions Guide -->
+            <div class="text-center mt-3">
+                <h1 class="text-xl font-extrabold text-gray-900 tracking-tight">Spot the Red Flag 🔍</h1>
+                <p class="text-[11px] text-gray-400 mt-1">Swipe <span class="text-red-500 font-bold uppercase">LEFT if
+                        SUS</span> or <span class="text-emerald-500 font-bold uppercase">RIGHT if SAFE</span></p>
+            </div>
+
+            <!-- INTERACTIVE DECK CONTAINER -->
+            <div class="flex-1 flex justify-center items-center relative my-4 w-full min-h-[500px]" id="deck">
+
+                <!-- Card 3: Fake Telegram Content Creator Internship (Bottom Card) -->
+                <div class="swipe-card absolute w-full max-w-[340px] bg-gradient-to-b from-sky-50 to-sky-100 rounded-[32px] p-4 shadow-xl border border-sky-200/60 flex flex-col justify-between h-[480px] z-10 scale-95 translate-y-4 opacity-70"
+                    id="card3" data-correct="sus">
+                    <div class="space-y-3 flex-1 flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span
+                                class="text-[10px] font-bold text-sky-700 bg-sky-200/50 px-2.5 py-1 rounded-full uppercase">💬
+                                Telegram Message</span>
+                            <span class="text-xs font-bold text-sky-700">Internship Offer</span>
+                        </div>
+                        <!-- Clicking this container triggers zoom -->
+                        <div onclick="openLightbox('Images/swipe3.png', 'Content Creator Job Scam')"
+                            class="flex-1 flex items-center justify-center my-1 rounded-2xl overflow-hidden bg-white border border-sky-200/40 cursor-zoom-in relative group">
+                            <img class="w-full h-full object-contain max-h-[310px]" src="Images/swipe3.png"
+                                alt="Content Creator Internship">
+                            <div
+                                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-xs font-bold">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-sm"></i> View Full Image
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="text-center text-[11px] text-sky-700/80 font-semibold border-t border-sky-200/60 pt-2 flex justify-between items-center">
+                        <span>Check the payment & URL!</span>
+                        <span class="font-bold text-sky-800">10 pts</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Safe Social Post - NP Official Page (Middle Card) -->
+                <div class="swipe-card absolute w-full max-w-[340px] bg-gradient-to-b from-rose-50 to-rose-100 rounded-[32px] p-4 shadow-xl border border-rose-200/60 flex flex-col justify-between h-[480px] z-20 scale-98 translate-y-2 opacity-90"
+                    id="card2" data-correct="safe">
+                    <div class="space-y-3 flex-1 flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span
+                                class="text-[10px] font-bold text-rose-700 bg-rose-200/50 px-2.5 py-1 rounded-full uppercase">📱
+                                Instagram Post</span>
+                            <span class="text-xs font-bold text-rose-700">NP Official</span>
+                        </div>
+                        <!-- Clicking this container triggers zoom -->
+                        <div onclick="openLightbox('Images/swipe2.jpg', 'NP Acai Giveaway')"
+                            class="flex-1 flex items-center justify-center my-1 rounded-2xl overflow-hidden bg-white border border-rose-200/40 cursor-zoom-in relative group">
+                            <img class="w-full h-full object-contain max-h-[310px]" src="Images/swipe2.jpg"
+                                alt="NP Acai Giveaway">
+                            <div
+                                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-xs font-bold">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-sm"></i> View Full Image
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="text-center text-[11px] text-rose-700/80 font-semibold border-t border-rose-200/60 pt-2 flex justify-between items-center">
+                        <span>Check the blue tick verify!</span>
+                        <span class="font-bold text-rose-800">10 pts</span>
+                    </div>
+                </div>
+
+                <!-- Card 1: World Cup Ticket Scam (Top Card - Active) -->
+                <div class="swipe-card absolute w-full max-w-[340px] bg-gradient-to-b from-purple-50 to-purple-100 rounded-[32px] p-4 shadow-2xl border border-purple-200/60 flex flex-col justify-between h-[480px] z-30"
+                    id="card1" data-correct="sus">
+                    <div class="space-y-3 flex-1 flex flex-col justify-between">
+                        <div class="flex justify-between items-center">
+                            <span
+                                class="text-[10px] font-bold text-purple-700 bg-purple-200/50 px-2.5 py-1 rounded-full uppercase">⚽
+                                Instagram Deal</span>
+                            <span class="text-xs font-bold text-purple-700">World Cup Hype</span>
+                        </div>
+                        <!-- Clicking this container triggers zoom -->
+                        <div onclick="openLightbox('Images/swipe1.png', 'World Cup Ticket')"
+                            class="flex-1 flex items-center justify-center my-1 rounded-2xl overflow-hidden bg-white border border-purple-200/40 cursor-zoom-in relative group">
+                            <img class="w-full h-full object-contain max-h-[310px]" src="Images/swipe1.png"
+                                alt="World Cup Ticket Scam">
+                            <div
+                                class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-white text-xs font-bold">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-sm"></i> View Full Image
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="text-center text-[11px] text-purple-700/80 font-semibold border-t border-purple-200/60 pt-2 flex justify-between items-center">
+                        <span>$50 Cat 1 final tickets? 🤔</span>
+                        <span class="font-bold text-purple-800">10 pts</span>
+                    </div>
+                </div>
+
+                <!-- End Screen (Shown when all cards are cleared) -->
+                <div class="absolute w-full max-w-[340px] bg-white rounded-[32px] p-6 shadow-xl border border-purple-100 flex flex-col items-center justify-center h-[480px] z-0 text-center space-y-4"
+                    id="endScreen">
+                    <div
+                        class="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center text-3xl text-emerald-500 shadow-inner">
+                        🎉
+                    </div>
+                    <h2 class="text-lg font-bold text-gray-900">Weekly Goal Completed!</h2>
+                    <p class="text-xs text-gray-400 max-w-[220px]">Fantastic job! You've successfully completed today's
+                        Spotter Arena swipe session.</p>
+                    <div class="bg-brand-purple-light text-brand-purple px-4 py-2 rounded-2xl text-xs font-bold animate-bounce"
+                        id="finalPoints">
+                        +30 Points Awarded!
+                    </div>
+                    <a href="spotter.html"
+                        class="w-full bg-brand-purple text-white py-3 rounded-2xl font-bold text-xs shadow-md transition-all active:scale-[0.99] block mt-4">
+                        Return to Spotter Hub
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- 🚨 INSTANT AUTOMATIC FEEDBACK BANNER BOX -->
+            <div id="feedbackBanner"
+                class="absolute bottom-24 left-5 right-5 bg-white border rounded-[24px] p-4 shadow-xl z-40 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none">
+                <div class="flex items-center space-x-3">
+                    <div id="feedbackIcon"
+                        class="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg">
+                        <i class="fa-solid"></i>
+                    </div>
+                    <div>
+                        <h4 id="feedbackTitle" class="text-sm font-extrabold">Correct!</h4>
+                        <p id="feedbackText" class="text-[10px] text-gray-400">You identified this correctly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fun Mini Hint / Prompt footer -->
+            <div class="text-center pb-4 pt-2">
+                <span
+                    class="text-[11px] text-purple-400 bg-purple-50 border border-purple-100 px-3 py-1.5 rounded-full font-medium inline-block">
+                    ⚡ Tip: Tap on any screenshot to zoom in!
+                </span>
+            </div>
+
+        </div>
+
+        <!-- 📸 DYNAMIC FULL-SCREEN LIGHTBOX MODAL OVERLAY -->
+        <div id="lightbox"
+            class="absolute inset-0 bg-black/95 z-50 hidden flex flex-col justify-center items-center p-4 cursor-zoom-out animate-fade-in"
+            onclick="closeLightbox()">
+            <!-- Close Button UI -->
+            <button
+                class="absolute top-6 right-6 text-white bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex justify-center items-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="w-full max-h-[80%] flex items-center justify-center">
+                <img id="lightboxImg" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl" src="" alt="">
+            </div>
+            <p id="lightboxCaption" class="text-white/80 text-xs mt-4 text-center max-w-[280px] font-medium"></p>
+        </div>
+
+        <!-- System Fixed 4-Item Navigation Bar Overlay -->
+        <div
+            class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-purple-100/80 px-4 py-3 flex justify-between items-center z-20 rounded-b-[40px]">
+
+            <!-- Home Tab -->
+            <a href="index.html"
+                class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-solid fa-house text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Home</span>
+            </a>
+
+            <!-- Spotter Tab (Active state highlighted) -->
+            <a href="spotter.html" class="flex flex-col items-center flex-1 py-1 text-brand-purple">
+                <div class="bg-brand-purple-light px-4 py-1 rounded-full mb-1">
+                    <i class="fa-solid fa-bullseye text-sm"></i>
+                </div>
+                <span class="text-[10px] font-bold">Spotter</span>
+            </a>
+
+            <!-- Ally Network Tab -->
+            <button
+                class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-regular fa-comments text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Ally</span>
+            </button>
+
+            <!-- Profile Wallet Tab -->
+            <button
+                class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-regular fa-user text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Profile</span>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- SCRIPT FOR CARD SWIPING & LIGHTBOX -->
+    <script>
+        const cards = Array.from(document.querySelectorAll('.swipe-card'));
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const endScreen = document.getElementById('endScreen');
+        const finalPoints = document.getElementById('finalPoints');
+        const feedbackBanner = document.getElementById('feedbackBanner');
+        const feedbackIcon = document.getElementById('feedbackIcon');
+        const feedbackTitle = document.getElementById('feedbackTitle');
+        const feedbackText = document.getElementById('feedbackText');
+
+        let currentCardIndex = 0;
+        let score = 0;
+        let isWaitingForFeedback = false;
+
+        // Lightbox Functions
+        function openLightbox(imgSrc, captionText) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = captionText;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Swipe Feedback Display Mechanisms
+        function showFeedback(isCorrect, correctAns) {
+            isWaitingForFeedback = true;
+
+            // UI Styling depending on correctness
+            if (isCorrect) {
+                feedbackBanner.className = "absolute bottom-24 left-5 right-5 bg-emerald-50 border border-emerald-200 rounded-[24px] p-4 shadow-xl z-40 transform translate-y-0 opacity-100 transition-all duration-300";
+                feedbackIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white text-lg bg-emerald-500 shadow-sm";
+                feedbackIcon.querySelector('i').className = "fa-solid fa-circle-check";
+                feedbackTitle.innerText = "Correct! 🎉";
+                feedbackTitle.className = "text-sm font-extrabold text-emerald-800";
+                feedbackText.innerText = "Awesome job identifying the red flags!";
+                feedbackText.className = "text-[10px] text-emerald-600";
+            } else {
+                feedbackBanner.className = "absolute bottom-24 left-5 right-5 bg-rose-50 border border-rose-200 rounded-[24px] p-4 shadow-xl z-40 transform translate-y-0 opacity-100 transition-all duration-300";
+                feedbackIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white text-lg bg-rose-500 shadow-sm";
+                feedbackIcon.querySelector('i').className = "fa-solid fa-circle-xmark";
+                feedbackTitle.innerText = "Whoops, Wrong! 🚨";
+                feedbackTitle.className = "text-sm font-extrabold text-rose-800";
+                feedbackText.innerText = `This was actually a ${correctAns.toUpperCase()} card.`;
+                feedbackText.className = "text-[10px] text-rose-600";
+            }
+
+            // Auto-dismiss feedback message after 1.5 seconds
+            setTimeout(() => {
+                dismissFeedback();
+            }, 1500);
+        }
+
+        function dismissFeedback() {
+            // Dismiss banner
+            feedbackBanner.className = "absolute bottom-24 left-5 right-5 bg-white border rounded-[24px] p-4 shadow-xl z-40 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none";
+            isWaitingForFeedback = false;
+
+            // Now actually transition the cards visually after they read the feedback
+            const cardElement = document.getElementById(`card${currentCardIndex + 1}`);
+            if (cardElement) {
+                cardElement.style.display = 'none';
+            }
+            advanceDeck();
+        }
+
+        // Hook up touch and mouse drag swiping physics
+        cards.forEach((card, index) => {
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            card.addEventListener('mousedown', dragStart);
+            card.addEventListener('touchstart', dragStart, { passive: true });
+
+            function dragStart(e) {
+                if (isWaitingForFeedback) return; // Prevent interaction during feedback stage
+                if (e.target.closest('[onclick]')) return;
+                isDragging = true;
+                card.classList.add('dragging');
+                startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+            }
+
+            document.addEventListener('mousemove', dragMove);
+            document.addEventListener('touchmove', dragMove, { passive: false });
+
+            function dragMove(e) {
+                if (!isDragging) return;
+                currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                const diffX = currentX - startX;
+
+                // Rotational physics for Tinder-like swiping
+                const rotation = diffX / 10;
+                card.style.transform = `translateX(${diffX}px) rotate(${rotation}deg)`;
+
+                // Dynamic UI color feedback on drag thresholds
+                if (diffX > 60) {
+                    card.style.boxShadow = '0 20px 25px -5px rgba(16, 185, 129, 0.3)'; // Green glow (Safe)
+                } else if (diffX < -60) {
+                    card.style.boxShadow = '0 20px 25px -5px rgba(239, 68, 68, 0.3)'; // Red glow (Sus)
+                } else {
+                    card.style.boxShadow = '';
+                }
+            }
+
+            document.addEventListener('mouseup', dragEnd);
+            document.addEventListener('touchend', dragEnd);
+
+            function dragEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                card.classList.remove('dragging');
+
+                const diffX = currentX - startX;
+                if (diffX > 110) {
+                    swipe('safe');
+                } else if (diffX < -110) {
+                    swipe('sus');
+                } else {
+                    // Reset to center if threshold not met
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                }
+            }
+
+            function swipe(direction) {
+                if (direction === 'safe') {
+                    card.style.transform = 'translateX(500px) rotate(30deg)';
+                } else {
+                    card.style.transform = 'translateX(-500px) rotate(-30deg)';
+                }
+                card.style.opacity = '0';
+
+                // Evaluate answer
+                const isCorrect = card.dataset.correct === direction;
+                if (isCorrect) {
+                    score++;
+                }
+
+                // Update score counter on header instantly
+                scoreDisplay.innerText = `Score: ${score}/3`;
+
+                // PRE-EMPTIVE FIX: If this is the last card swiped, update the final score text on the end screen *immediately* before feedback displays
+                if (currentCardIndex >= cards.length - 1) {
+                    finalPoints.innerText = `+${score * 10} Points Awarded!`;
+                }
+
+                // Show feedback popup instantly while keeping card off-screen
+                showFeedback(isCorrect, card.dataset.correct);
+            }
+        });
+
+        function advanceDeck() {
+            currentCardIndex++;
+
+            // Re-stack standard 3D depth deck scale layout positioning with solid opacity
+            if (currentCardIndex === 1) {
+                document.getElementById('card2').style.transform = 'scale(1) translate-y-0';
+                document.getElementById('card2').classList.add('z-30');
+                document.getElementById('card3').style.transform = 'scale(0.98) translate-y-2';
+                document.getElementById('card3').style.opacity = '1';
+            } else if (currentCardIndex === 2) {
+                document.getElementById('card3').style.transform = 'scale(1) translate-y-0';
+                document.getElementById('card3').classList.add('z-30');
+                document.getElementById('card3').style.opacity = '1';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
