@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pause&Pulse - Profile Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F5FB;
+        }
+        .brand-purple { color: #5D43DA; }
+        .bg-brand-purple { background-color: #5D43DA; }
+        .bg-brand-purple-light { background-color: #F0EDFF; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <!-- Mobile Device Frame Container -->
+    <div class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
+        
+        <!-- Status Bar Mimic -->
+        <div class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10 bg-white/40 backdrop-blur-md">
+            <span>9:41</span>
+            <div class="flex items-center space-x-1.5">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full text-base"></i>
+            </div>
+        </div>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto px-5 pb-24 pt-4 space-y-5 no-scrollbar">
+            
+            <!-- Top App Header Section -->
+            <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold brand-purple tracking-tight">Student Profile</span>
+                <a href="login.html" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl flex justify-center items-center gap-1.5 border border-rose-100 shadow-sm text-xs font-bold transition-transform active:scale-95">
+                    <i class="fa-solid fa-right-from-bracket text-xs"></i> Logout
+                </a>
+            </div>
+
+            <!-- USER HERO BANNER CARD -->
+            <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 flex items-center space-x-4">
+                <div class="w-16 h-16 bg-gradient-to-tr from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-xl font-black shadow-md border-2 border-white">
+                    B
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-base font-black text-gray-900 tracking-tight">Baihui</h2>
+                    <p class="text-[11px] text-gray-400 font-medium">Ngee Ann Polytechnic</p>
+                    <div class="mt-1.5 inline-flex items-center space-x-1 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-md">
+                        <span class="text-[9px] font-black brand-purple uppercase tracking-wider">School of ICT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REWARDS WALLET GRID METRICS -->
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-gradient-to-br from-purple-600 to-brand-purple rounded-[24px] p-4 text-white shadow-md relative overflow-hidden">
+                    <div class="absolute -right-2 -bottom-2 text-white/10 text-5xl font-black"><i class="fa-solid fa-wallet"></i></div>
+                    <span class="text-[10px] font-bold text-purple-200 uppercase tracking-wider block">Wallet Balance</span>
+                    <h3 class="text-2xl font-black tracking-tight mt-1"><span id="walletPoints">380</span> <span class="text-xs font-bold text-purple-200">pts</span></h3>
+                </div>
+
+                <div class="bg-white rounded-[24px] p-4 border border-purple-100/60 shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-2 -bottom-2 text-purple-50 text-5xl font-black"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Streak Record</span>
+                    <h3 class="text-2xl font-black tracking-tight text-gray-900 mt-1">12 <span class="text-xs font-bold text-gray-400">days</span></h3>
+                </div>
+            </div>
+
+            <!-- NEW FEATURE: REDEEM POINTS MARKETPLACE HUB -->
+            <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 space-y-3.5">
+                <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider px-0.5">Redeem Rewards</h3>
+                
+                <div class="space-y-2.5">
+                    <!-- Reward Voucher item 1 -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-100 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-lg shadow-inner">☕</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">Free Kopi-O</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">Valid at all campus canteens</p>
+                            </div>
+                        </div>
+                        <button onclick="redeemItem('Free Kopi-O', 400)" class="px-3 py-1.5 bg-brand-purple text-white text-[10px] font-black uppercase tracking-wider rounded-xl shadow-sm transition-transform active:scale-95 hover:opacity-90">
+                            400 pts
+                        </button>
+                    </div>
+
+                    <!-- Reward Voucher item 2 -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-100 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-lg shadow-inner">🖨️</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">$2 Campus Printing Credit</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">Direct library account top-up</p>
+                            </div>
+                        </div>
+                        <button onclick="redeemItem('$2 Printing Credit', 300)" class="px-3 py-1.5 bg-brand-purple text-white text-[10px] font-black uppercase tracking-wider rounded-xl shadow-sm transition-transform active:scale-95 hover:opacity-90">
+                            300 pts
+                        </button>
+                    </div>
+
+                    <!-- Reward Voucher item 3 -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-100 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center text-lg shadow-inner">🍦</div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">1-for-1 Ice Cream</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">Exclusive mobile wellness deal</p>
+                            </div>
+                        </div>
+                        <button onclick="redeemItem('1-for-1 Ice Cream', 500)" class="px-3 py-1.5 bg-brand-purple text-white text-[10px] font-black uppercase tracking-wider rounded-xl shadow-sm transition-transform active:scale-95 hover:opacity-90">
+                            500 pts
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNLOCKED ACHIEVEMENTS BADGES CONTAINER -->
+            <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 space-y-3.5">
+                <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider px-0.5">Unlocked Badges</h3>
+                
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="flex flex-col items-center text-center space-y-1 p-2 bg-gray-50 rounded-2xl border border-gray-100">
+                        <span class="textxl">🔍</span>
+                        <span class="text-[10px] font-black text-gray-800 tracking-tight">Sus Link Expert</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-1 p-2 bg-gray-50 rounded-2xl border border-gray-100">
+                        <span class="text-xl">⚡</span>
+                        <span class="text-[10px] font-black text-gray-800 tracking-tight">Reflex Mastery</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center space-y-1 p-2 bg-gray-50 rounded-2xl border border-gray-100">
+                        <span class="text-xl">🤝</span>
+                        <span class="text-[10px] font-black text-gray-800 tracking-tight">Active Ally</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVITY HISTORY SUMMARY MATRIX -->
+            <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 space-y-4">
+                <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider px-0.5">Recent Activity Logs</h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between border-b border-gray-50 pb-2.5">
+                        <div class="flex items-center space-x-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs shadow-inner"><i class="fa-solid fa-check"></i></div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">Spotter Swipe Arena</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">Completed session cleanly</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-black text-emerald-600">+30 pts</span>
+                    </div>
+
+                    <div class="flex items-center justify-between border-b border-gray-50 pb-2.5">
+                        <div class="flex items-center space-x-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-purple-50 text-brand-purple flex items-center justify-center text-xs shadow-inner"><i class="fa-solid fa-comments"></i></div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">Support Chat Summary</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">Logged securely anonymously</p>
+                            </div>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 bg-gray-100 px-2 py-0.5 rounded">Saved</span>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-xs shadow-inner"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800">Surprise Reflex Attack</h4>
+                                <p class="text-[9px] text-gray-400 font-medium">Report action confirmed</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-black text-emerald-600">+15 pts</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 📱 PREMIUM SUCCESS DIALOG FOR REDEMPTION -->
+        <div id="redeemPopup" class="absolute inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-6 backdrop-blur-md">
+            <div class="w-full max-w-[300px] bg-white rounded-[36px] p-6 shadow-2xl flex flex-col items-center text-center space-y-5 border border-purple-100">
+                <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-500 shadow-inner flex items-center justify-center text-3xl">
+                    🎉
+                </div>
+                <div class="space-y-1.5">
+                    <h3 class="text-lg font-black tracking-tight text-gray-900 leading-none">Voucher Unlocked!</h3>
+                    <p id="redeemMessage" class="text-xs text-gray-400 leading-relaxed px-1 mt-1">Your reward has been claimed successfully.</p>
+                </div>
+                <button onclick="closeRedeemPopup()" class="w-full bg-brand-purple text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider shadow-md text-center block transition-all active:scale-95">
+                    Awesome
+                </button>
+            </div>
+        </div>
+
+        <!-- System Fixed 4-Item Navigation Bar Overlay -->
+        <div class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-purple-100/80 px-4 py-3 flex justify-between items-center z-20 rounded-b-[40px]">
+            <a href="index.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-solid fa-house text-base mb-1"></i>
+                <span class="text-[10px] font-semibold">Home</span>
+            </a>
+            <a href="spotter.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-solid fa-bullseye text-base mb-1"></i>
+                <span class="text-[10px] font-semibold">Spotter</span>
+            </a>
+            <a href="ally-network.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-solid fa-comments text-base mb-1"></i>
+                <span class="text-[10px] font-semibold">Ally</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center flex-1 py-1 text-brand-purple">
+                <div class="bg-brand-purple-light px-4 py-1 rounded-full mb-1">
+                    <i class="fa-solid fa-user text-sm"></i>
+                </div>
+                <span class="text-[10px] font-black">Profile</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT FOR REDEEM LOGIC SIMULATION -->
+    <script>
+        let balance = 380;
+        const walletDisplay = document.getElementById('walletPoints');
+        const popup = document.getElementById('redeemPopup');
+        const message = document.getElementById('redeemMessage');
+
+        function redeemItem(itemName, cost) {
+            if (balance >= cost) {
+                balance -= cost;
+                walletDisplay.innerText = balance;
+                message.innerText = `Your voucher for "${itemName}" has been securely generated. Open your student portal email to claim your voucher barcode code!`;
+                popup.classList.remove('hidden');
+            } else {
+                alert("🚨 Insufficient point balance! Complete more Spotter Arenas or log safe reflection choices to earn more points.");
+            }
+        }
+
+        function closeRedeemPopup() {
+            popup.classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
