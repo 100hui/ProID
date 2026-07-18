@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <!-- NEW FEATURE: REDEEM POINTS MARKETPLACE HUB -->
+            <!-- REDEEM POINTS MARKETPLACE HUB -->
             <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 space-y-3.5">
                 <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider px-0.5">Redeem Rewards</h3>
                 
@@ -190,7 +190,7 @@
         </div>
 
         <!-- 📱 PREMIUM SUCCESS DIALOG FOR REDEMPTION -->
-        <div id="redeemPopup" class="absolute inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-6 backdrop-blur-md">
+        <div id="redeemPopup" class="absolute inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-6 backdrop-blur-sm">
             <div class="w-full max-w-[300px] bg-white rounded-[36px] p-6 shadow-2xl flex flex-col items-center text-center space-y-5 border border-purple-100">
                 <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-500 shadow-inner flex items-center justify-center text-3xl">
                     🎉
@@ -199,8 +199,24 @@
                     <h3 class="text-lg font-black tracking-tight text-gray-900 leading-none">Voucher Unlocked!</h3>
                     <p id="redeemMessage" class="text-xs text-gray-400 leading-relaxed px-1 mt-1">Your reward has been claimed successfully.</p>
                 </div>
-                <button onclick="closeRedeemPopup()" class="w-full bg-brand-purple text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider shadow-md text-center block transition-all active:scale-95">
+                <button onclick="closePopup('redeemPopup')" class="w-full bg-brand-purple text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider shadow-md text-center block transition-all active:scale-95">
                     Awesome
+                </button>
+            </div>
+        </div>
+
+        <!-- 📱 NEW PREMIUM ERROR POP-UP MODAL (Replaces laptop style alert window) -->
+        <div id="errorPopup" class="absolute inset-0 bg-slate-900/60 z-50 hidden flex items-center justify-center p-6 backdrop-blur-sm">
+            <div class="w-full max-w-[300px] bg-white rounded-[36px] p-6 shadow-2xl flex flex-col items-center text-center space-y-5 border border-rose-100">
+                <div class="w-16 h-16 rounded-full bg-rose-50 text-rose-500 shadow-inner flex items-center justify-center text-3xl">
+                    ⚠️
+                </div>
+                <div class="space-y-1.5">
+                    <h3 class="text-lg font-black tracking-tight text-rose-600 leading-none">Insufficient Points</h3>
+                    <p id="errorMessage" class="text-xs text-gray-400 leading-relaxed px-1 mt-1">You do not have enough points to complete this redemption choice.</p>
+                </div>
+                <button onclick="closePopup('errorPopup')" class="w-full bg-brand-purple text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider shadow-md text-center block transition-all active:scale-95">
+                    Got it
                 </button>
             </div>
         </div>
@@ -233,22 +249,25 @@
     <script>
         let balance = 380;
         const walletDisplay = document.getElementById('walletPoints');
-        const popup = document.getElementById('redeemPopup');
-        const message = document.getElementById('redeemMessage');
+        const successPopup = document.getElementById('redeemPopup');
+        const successMessage = document.getElementById('redeemMessage');
+        const errorPopup = document.getElementById('errorPopup');
+        const errorMessage = document.getElementById('errorMessage');
 
         function redeemItem(itemName, cost) {
             if (balance >= cost) {
                 balance -= cost;
                 walletDisplay.innerText = balance;
-                message.innerText = `Your voucher for "${itemName}" has been securely generated. Open your student portal email to claim your voucher barcode code!`;
-                popup.classList.remove('hidden');
+                successMessage.innerText = `Your voucher for "${itemName}" has been securely generated. Open your student portal email to claim your voucher barcode code!`;
+                successPopup.classList.remove('hidden');
             } else {
-                alert("🚨 Insufficient point balance! Complete more Spotter Arenas or log safe reflection choices to earn more points.");
+                errorMessage.innerText = `You need ${cost} pts to redeem "${itemName}". Complete more Spotter Arenas or log safe reflection choices to earn more points!`;
+                errorPopup.classList.remove('hidden');
             }
         }
 
-        function closeRedeemPopup() {
-            popup.classList.add('hidden');
+        function closePopup(popupId) {
+            document.getElementById(popupId).classList.add('hidden');
         }
     </script>
 
