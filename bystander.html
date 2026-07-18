@@ -45,10 +45,11 @@
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
     <!-- Mobile Device Frame Container -->
-    <div class="w-full sm:max-w-[412px] h-screen sm:h-[892px] bg-[#F9F8FD] sm:rounded-[48px] sm:shadow-2xl overflow-hidden sm:border-[8px] sm:border-gray-900 relative flex flex-col">
+    <div
+        class="w-full sm:max-w-[412px] h-screen sm:h-[892px] bg-[#F9F8FD] sm:rounded-[48px] sm:shadow-2xl overflow-hidden sm:border-[8px] sm:border-gray-900 relative flex flex-col">
 
-        <!-- Status Bar Mimic -->
-        <div class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10 bg-transparent">
+        <div
+            class="hidden sm:flex w-full px-8 pt-4 pb-2 justify-between items-center text-xs font-semibold text-gray-700 z-10">
             <span>9:41</span>
             <div class="flex items-center space-x-1.5">
                 <i class="fa-solid fa-signal"></i>
@@ -66,7 +67,8 @@
                     <a href="ally-network.html" class="text-gray-500 hover:text-purple-600 transition-colors pr-1">
                         <i class="fa-solid fa-chevron-left text-sm"></i>
                     </a>
-                    <div class="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-base shadow-inner">
+                    <div
+                        class="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-base shadow-inner">
                         <i class="fa-solid fa-eye"></i>
                     </div>
                     <div>
@@ -76,17 +78,20 @@
                         </span>
                     </div>
                 </div>
-                <span class="text-[9px] font-bold bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-lg border border-emerald-100/60">Active</span>
+                <span
+                    class="text-[9px] font-bold bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-lg border border-emerald-100/60">Active</span>
             </div>
 
             <!-- Page Explainer Headers -->
             <div class="space-y-1">
                 <h1 class="text-xl font-extrabold text-gray-900 tracking-tight">Supporting a Friend</h1>
-                <p class="text-xs text-gray-500 leading-relaxed">Don't be a passive observer. Learn exactly how to support your peers cleanly without adding fuel to the fire.</p>
+                <p class="text-xs text-gray-500 leading-relaxed">Don't be a passive observer. Learn exactly how to
+                    support your peers cleanly without adding fuel to the fire.</p>
             </div>
 
             <!-- CORE PRINCIPLE EDUCATION WIDGET -->
-            <div class="bg-gradient-to-br from-teal-800 to-emerald-900 p-5 rounded-[28px] text-white shadow-md space-y-3.5">
+            <div
+                class="bg-gradient-to-br from-teal-800 to-emerald-900 p-5 rounded-[28px] text-white shadow-md space-y-3.5">
                 <div class="flex items-center space-x-2 text-emerald-300">
                     <i class="fa-solid fa-shield-halved text-sm"></i>
                     <h3 class="text-xs font-black uppercase tracking-wider">The 3 Ds of Safe Peer Action</h3>
@@ -109,30 +114,37 @@
 
             <!-- INTERACTIVE SCENARIO SELECTOR SWITCH -->
             <div class="space-y-3">
-                <h3 class="text-xs font-black text-gray-400 uppercase tracking-wider px-0.5">Select a Campus Scenario</h3>
-                
+                <h3 class="text-xs font-black text-gray-400 uppercase tracking-wider px-0.5">Select a Campus Scenario
+                </h3>
+
                 <!-- Scenario Option 1 -->
-                <div onclick="selectScenario('argue')" id="card-argue" class="bg-white p-4 rounded-[24px] shadow-sm border border-emerald-500/30 ring-2 ring-emerald-500/20 flex items-start justify-between cursor-pointer transition-all">
+                <div onclick="selectScenario('argue')" id="card-argue"
+                    class="bg-white p-4 rounded-[24px] shadow-sm border border-emerald-500/30 ring-2 ring-emerald-500/20 flex items-start justify-between cursor-pointer transition-all">
                     <div class="flex items-start space-x-3.5">
-                        <div class="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-sm flex-shrink-0 mt-0.5 shadow-inner">
+                        <div
+                            class="w-9 h-9 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-sm flex-shrink-0 mt-0.5 shadow-inner">
                             <i class="fa-solid fa-comments"></i>
                         </div>
                         <div class="flex-1">
                             <h4 class="text-xs font-extrabold text-gray-900">Friend Argued with Groupmate</h4>
-                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Friction exploded inside a shared task thread, leading to severe project communication breakdown.</p>
+                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Friction exploded inside a shared
+                                task thread, leading to severe project communication breakdown.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Scenario Option 2 -->
-                <div onclick="selectScenario('meme')" id="card-meme" class="bg-white p-4 rounded-[24px] shadow-sm border border-purple-100/60 flex items-start justify-between cursor-pointer transition-all hover:bg-gray-50/60">
+                <div onclick="selectScenario('meme')" id="card-meme"
+                    class="bg-white p-4 rounded-[24px] shadow-sm border border-purple-100/60 flex items-start justify-between cursor-pointer transition-all hover:bg-gray-50/60">
                     <div class="flex items-start space-x-3.5">
-                        <div class="w-9 h-9 bg-purple-50 text-brand-purple rounded-xl flex items-center justify-center text-sm flex-shrink-0 mt-0.5 shadow-inner">
+                        <div
+                            class="w-9 h-9 bg-purple-50 text-brand-purple rounded-xl flex items-center justify-center text-sm flex-shrink-0 mt-0.5 shadow-inner">
                             <i class="fa-solid fa-face-laugh-squint"></i>
                         </div>
                         <div class="flex-1">
                             <h4 class="text-xs font-extrabold text-gray-900">Unwanted Meme Mockery Target</h4>
-                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Friend was made fun of and turned into a sticker/meme pack that they feel deeply uncomfortable with.</p>
+                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Friend was made fun of and turned
+                                into a sticker/meme pack that they feel deeply uncomfortable with.</p>
                         </div>
                     </div>
                 </div>
@@ -142,21 +154,29 @@
             <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 space-y-4">
                 <div class="flex items-center space-x-2 text-gray-800">
                     <div class="w-1.5 h-3.5 bg-emerald-500 rounded-full"></div>
-                    <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider">Your Safe Action Blueprint</h3>
+                    <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider">Your Safe Action Blueprint
+                    </h3>
                 </div>
 
                 <div id="blueprint-content" class="space-y-4">
                     <div class="bg-emerald-50/40 rounded-2xl p-4 border border-emerald-100/30 space-y-2">
-                        <span class="text-[10px] font-black text-emerald-700 uppercase tracking-wide block">💬 Private Check-In Template</span>
-                        <p class="text-xs text-gray-700 leading-relaxed italic bg-white p-3 rounded-xl border border-gray-100 font-medium">
-                            "Hey, saw that massive project chat clash just now. Don't worry, deadlines get everyone keyed up. Take a break from typing back to them for an hour, let's grab coffee or look over the slides together quietly later."
+                        <span class="text-[10px] font-black text-emerald-700 uppercase tracking-wide block">💬 Private
+                            Check-In Template</span>
+                        <p
+                            class="text-xs text-gray-700 leading-relaxed italic bg-white p-3 rounded-xl border border-gray-100 font-medium">
+                            "Hey, saw that massive project chat clash just now. Don't worry, deadlines get everyone
+                            keyed up. Take a break from typing back to them for an hour, let's grab coffee or look over
+                            the slides together quietly later."
                         </p>
                     </div>
 
                     <div class="bg-purple-50/30 rounded-2xl p-4 border border-purple-100/30 space-y-2">
-                        <span class="text-[10px] font-black brand-purple uppercase tracking-wide block">🛡️ Smart De-escalation Strategy</span>
+                        <span class="text-[10px] font-black brand-purple uppercase tracking-wide block">🛡️ Smart
+                            De-escalation Strategy</span>
                         <p class="text-xs text-gray-600 leading-relaxed font-medium">
-                            Act as the grounding wire. In the group thread, post a stabilizing statement: <span class="text-gray-900 font-bold">"Let's halt the back-and-forth arguments here so we don't cross boundaries. Let's just itemize what work needs to get done."</span>
+                            Act as the grounding wire. In the group thread, post a stabilizing statement: <span
+                                class="text-gray-900 font-bold">"Let's halt the back-and-forth arguments here so we
+                                don't cross boundaries. Let's just itemize what work needs to get done."</span>
                         </p>
                     </div>
                 </div>
@@ -166,41 +186,52 @@
             <div class="bg-white rounded-[28px] p-5 shadow-sm border border-purple-100/60 space-y-4">
                 <div class="flex items-center space-x-2 text-gray-800">
                     <div class="w-1.5 h-3.5 bg-indigo-500 rounded-full"></div>
-                    <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider">Psychological First Aid Basics</h3>
+                    <h3 class="text-xs font-black text-gray-900 uppercase tracking-wider">Psychological First Aid Basics
+                    </h3>
                 </div>
-                
+
                 <p class="text-[11px] text-gray-400 leading-relaxed">
-                    When a peer is overwhelmed by public campus conflict or digital exposure, implement the **Look, Listen, Link** toolkit checklist:
+                    When a peer is overwhelmed by public campus conflict or digital exposure, implement the **Look,
+                    Listen, Link** toolkit checklist:
                 </p>
 
                 <div class="space-y-3.5 pt-1">
                     <div class="flex items-start space-x-3">
-                        <div class="w-6 h-6 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
+                        <div
+                            class="w-6 h-6 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div>
                             <h4 class="text-xs font-bold text-gray-800">1. Look for Distress Signposts</h4>
-                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Watch out for text hyper-defensiveness, sudden radio silence in assignment logs, or avoiding campus tutorial classes entirely.</p>
+                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Watch out for text
+                                hyper-defensiveness, sudden radio silence in assignment logs, or avoiding campus
+                                tutorial classes entirely.</p>
                         </div>
                     </div>
 
                     <div class="flex items-start space-x-3">
-                        <div class="w-6 h-6 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
+                        <div
+                            class="w-6 h-6 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
                             <i class="fa-solid fa-ear-listen"></i>
                         </div>
                         <div>
                             <h4 class="text-xs font-bold text-gray-800">2. Listen without Fixing Instantly</h4>
-                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">When they explain their perspective, avoid jumping in with academic judgements. Let them vent safely to process the immediate panic spikes.</p>
+                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">When they explain their
+                                perspective, avoid jumping in with academic judgements. Let them vent safely to process
+                                the immediate panic spikes.</p>
                         </div>
                     </div>
 
                     <div class="flex items-start space-x-3">
-                        <div class="w-6 h-6 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
+                        <div
+                            class="w-6 h-6 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
                             <i class="fa-solid fa-link"></i>
                         </div>
                         <div>
                             <h4 class="text-xs font-bold text-gray-800">3. Link to Low-Barrier Networks</h4>
-                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Gently guide them to anonymous chatbots or Senior Allies to safeguard their grading markers or handle group resets officially.</p>
+                            <p class="text-[11px] text-gray-400 mt-0.5 leading-normal">Gently guide them to anonymous
+                                chatbots or Senior Allies to safeguard their grading markers or handle group resets
+                                officially.</p>
                         </div>
                     </div>
                 </div>
@@ -208,8 +239,10 @@
 
             <!-- NEXT STAGE GUIDED WORKFLOW ENTRY -->
             <div class="p-4 bg-purple-50 rounded-[24px] border border-purple-100/60 text-center space-y-2.5">
-                <p class="text-[11px] text-gray-500 font-medium px-2">Need a verified peer to help intervene or mediate the group issue objectively?</p>
-                <a href="ally-chat.html" class="w-full bg-brand-purple text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 transition-all active:scale-95">
+                <p class="text-[11px] text-gray-500 font-medium px-2">Need a verified peer to help intervene or mediate
+                    the group issue objectively?</p>
+                <a href="ally-chat.html"
+                    class="w-full bg-brand-purple text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 transition-all active:scale-95">
                     Connect with a Student Ally next <i class="fa-solid fa-arrow-right text-[9px]"></i>
                 </a>
             </div>
@@ -217,12 +250,15 @@
         </div>
 
         <!-- System Fixed 4-Item Navigation Bar Overlay -->
-        <div class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-purple-100/80 px-4 py-3 flex justify-between items-center z-20 rounded-b-[40px]">
-            <a href="index.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+        <div
+            class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-purple-100/80 px-4 py-3 flex justify-between items-center z-20 rounded-b-[40px]">
+            <a href="index.html"
+                class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
                 <i class="fa-solid fa-house text-base mb-1"></i>
                 <span class="text-[10px] font-semibold">Home</span>
             </a>
-            <a href="spotter.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+            <a href="spotter.html"
+                class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
                 <i class="fa-solid fa-bullseye text-base mb-1"></i>
                 <span class="text-[10px] font-semibold">Spotter</span>
             </a>
@@ -232,7 +268,8 @@
                 </div>
                 <span class="text-[10px] font-black">Ally</span>
             </a>
-            <a href="profile.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+            <a href="profile.html"
+                class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
                 <i class="fa-regular fa-user text-base mb-1"></i>
                 <span class="text-[10px] font-semibold">Profile</span>
             </a>
