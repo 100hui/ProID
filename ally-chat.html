@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pause&Pulse - Student Ally Chat</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F5FB;
+        }
+
+        .brand-purple {
+            color: #5D43DA;
+        }
+
+        .bg-brand-purple {
+            background-color: #5D43DA;
+        }
+
+        .bg-brand-purple-light {
+            background-color: #F0EDFF;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Bouncing typing loading dots animation */
+        .typing-dot {
+            animation: bounce 1.4s infinite both;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <!-- Mobile Device Frame Container -->
+    <div
+        class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
+
+        <!-- Status Bar Mimic -->
+        <div
+            class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10 bg-white/80 backdrop-blur-md">
+            <span>9:41</span>
+            <div class="flex items-center space-x-1.5">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full text-base"></i>
+            </div>
+        </div>
+
+        <!-- Peer Chat Header Area -->
+        <div
+            class="w-full px-5 py-3 border-b border-purple-100/60 bg-white/80 backdrop-blur-md flex justify-between items-center z-10 shadow-sm">
+            <div class="flex items-center space-x-3">
+                <a href="ally-network.html" class="text-gray-500 hover:text-purple-600 transition-colors pr-1">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </a>
+                <!-- Peer Profile Photo Placeholder Avatar -->
+                <div class="relative">
+                    <div
+                        class="w-9 h-9 bg-orange-100 text-orange-600 font-extrabold rounded-full flex items-center justify-center text-sm border border-orange-200">
+                        CH
+                    </div>
+                    <span
+                        class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-1">
+                        <h2 class="text-xs font-black text-gray-900">Chloe (Year 3 Ally)</h2>
+                        <i class="fa-solid fa-circle-check text-[10px] text-brand-purple"
+                            title="Verified Student Ally"></i>
+                    </div>
+                    <span class="text-[9px] font-bold text-gray-400">School of ICT peer mentor</span>
+                </div>
+            </div>
+            <span
+                class="text-[9px] font-bold bg-orange-50 text-orange-600 px-2.5 py-1 rounded-lg border border-orange-100">Peer
+                Guide</span>
+        </div>
+
+        <!-- Scrollable Message Stream Window Container -->
+        <div id="chatWindow" class="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar bg-[#FDFDFF]">
+
+            <!-- Connection Timestamp Indicator Label -->
+            <div class="text-center px-4 py-1">
+                <p
+                    class="text-[10px] text-gray-400 bg-purple-50/50 border border-purple-100/30 rounded-full py-1 px-3 inline-block font-medium">
+                    🤝 Connected securely with your assigned Campus Ally
+                </p>
+            </div>
+
+            <!-- Ally Message 1: Initial Welcoming Prompt -->
+            <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in">
+                <div
+                    class="w-7 h-7 bg-orange-100 text-orange-600 font-bold rounded-full flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border border-orange-200 shadow-sm">
+                    CH
+                </div>
+                <div
+                    class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                    Hey! I'm Chloe, a Year 3 multimedia student. Don't worry, whatever we discuss stays strictly between
+                    us.
+                </div>
+            </div>
+
+            <!-- Ally Message 2: Opening Inquiry -->
+            <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in" style="animation-delay: 0.3s;">
+                <div
+                    class="w-7 h-7 bg-orange-100 text-orange-600 font-bold rounded-full flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border border-orange-200 shadow-sm">
+                    CH
+                </div>
+                <div
+                    class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                    I heard you're going through a bit of group drama over a late module submission. Do you want to
+                    share what happened? I've definitely been there myself during Year 1!
+                </div>
+            </div>
+
+            <!-- Dynamic Peer Typing Anim Box (Hidden initially) -->
+            <div id="typingIndicator" class="flex items-start space-x-2.5 max-w-[85%] hidden">
+                <div
+                    class="w-7 h-7 bg-orange-100 text-orange-600 font-bold rounded-full flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border border-orange-200 shadow-sm">
+                    CH
+                </div>
+                <div
+                    class="bg-white border border-purple-100/60 px-4 py-3 rounded-[20px] rounded-tl-sm shadow-sm flex space-x-1 items-center justify-center h-8">
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full typing-dot"></div>
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full typing-dot"></div>
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full typing-dot"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chat Input Field Overlay Dock Footer -->
+        <div class="p-3 bg-white border-t border-purple-100/80 rounded-b-[48px] pb-6 flex items-center space-x-2">
+            <div class="flex-1 relative flex items-center bg-gray-50 border border-purple-100 rounded-2xl px-3.5 py-2">
+                <input id="messageInput" type="text" placeholder="Tell Chloe what happened..."
+                    class="w-full bg-transparent border-none outline-none text-xs text-gray-700 pr-8 placeholder-gray-400 font-medium"
+                    onkeydown="if(event.key === 'Enter') sendPeerMessage()">
+                <button class="absolute right-3.5 text-gray-400 hover:text-purple-600 transition-colors">
+                    <i class="fa-solid fa-face-smile text-sm"></i>
+                </button>
+            </div>
+            <!-- Send Submitting Button Trigger -->
+            <button onclick="sendPeerMessage()"
+                class="w-9 h-9 bg-brand-purple text-white rounded-xl flex items-center justify-center shadow-md shadow-purple-600/10 hover:opacity-95 transition-all active:scale-95 flex-shrink-0">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT FOR SIMULATED PEER TALK BACK -->
+    <script>
+        const chatWindow = document.getElementById('chatWindow');
+        const messageInput = document.getElementById('messageInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        let peerResponseSent = false;
+
+        function sendPeerMessage() {
+            const userText = messageInput.value.trim();
+            if (userText === "") return;
+
+            // 1. Append User Text Node Bubble into Stream
+            const userMsgHtml = `
+                <div class="flex items-start justify-end space-x-2.5 w-full">
+                    <div class="bg-brand-purple text-white p-3 rounded-[20px] rounded-tr-sm shadow-sm text-xs max-w-[75%] leading-relaxed font-medium">
+                        ${userText}
+                    </div>
+                </div>
+            `;
+
+            chatWindow.insertAdjacentHTML('beforeend', userMsgHtml);
+            messageInput.value = "";
+            scrollToBottom();
+
+            // 2. Trigger peer typing physics delays followed by empathetic peer guidance
+            if (!peerResponseSent) {
+                peerResponseSent = true;
+
+                setTimeout(() => {
+                    typingIndicator.classList.remove('hidden');
+                    chatWindow.appendChild(typingIndicator);
+                    scrollToBottom();
+                }, 500);
+
+                setTimeout(() => {
+                    typingIndicator.classList.add('hidden');
+
+                    const responseHtml = `
+                        <!-- Part 1: Empathetic Peer Support -->
+                        <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in mb-3">
+                            <div class="w-7 h-7 bg-orange-100 text-orange-600 font-bold rounded-full flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border border-orange-200 shadow-sm">
+                                CH
+                            </div>
+                            <div class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                                I totally understand why you're stressed. Getting removed from a project group chat over a deadline error feels horrible and honestly super awkward. But trust me, you are NOT the first person to experience this, and it is completely fixable. Don't beat yourself up!
+                            </div>
+                        </div>
+                        
+                        <!-- Part 2: Experienced Peer Strategy Advice -->
+                        <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in mb-3">
+                            <div class="w-7 h-7 bg-orange-100 text-orange-600 font-bold rounded-full flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border border-orange-200 shadow-sm">
+                                CH
+                            </div>
+                            <div class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                                When this happened to me in Year 1, I found that the best way to protect my grade and avoid unnecessary drama was to calmly reach out to the group leader directly. A simple, polite message explaining that I had completed my part and asking to be added back usually worked wonders
+                            </div>
+                        </div>
+
+                        <!-- Part 3: Real Human Hand-Off Escape Hatch -->
+                        <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in mb-4">
+                            <div class="w-7 h-7 bg-orange-100 text-orange-600 font-bold rounded-full flex items-center justify-center text-[10px] mt-0.5 flex-shrink-0 border border-orange-200 shadow-sm">
+                                CH
+                            </div>
+                            <div class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium space-y-2">
+                                <p>If your team refuses to talk to you or add you back, I can help you safely set up a sync meeting with your module supervisor so we can handle it officially without causing bad blood.</p>
+                                <p class="mt-2 text-[11px] text-gray-400 italic">Type back if you want me to help write that email draft together!</p>
+                            </div>
+                        </div>
+
+                        <!-- SYSTEM CALL TO ACTION SYSTEM TIPS BANNER -->
+                        <div class="text-center px-4 py-2 animate-fade-in w-full space-y-2">
+                            <div class="text-[10px] text-purple-600 bg-purple-50 rounded-2xl py-2 px-3 inline-block max-w-[95%] border border-purple-100 font-medium leading-normal shadow-sm">
+                                <span class="font-bold">Want to become a peer helper also?</span> Help lift your campus community! Join the <a href="#" class="underline font-bold hover:text-purple-800">Safe Sphere Ally Program</a> today!
+                            </div>
+    
+                            <!-- Action Step directly routing to Professional hand-off -->
+                            <a href="hand-off.html" class="w-full bg-white border border-purple-200 text-brand-purple py-2.5 rounded-xl font-extrabold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 shadow-sm">
+                                Need Official Guidance? Move to Stage 4: Warm Hand-off <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                            </a>
+                        </div>
+                    `;
+
+                    chatWindow.insertAdjacentHTML('beforeend', responseHtml);
+                    scrollToBottom();
+                }, 2200);
+            }
+        }
+
+        document.getElementById('messageInput').focus();
+        function scrollToBottom() { chatWindow.scrollTop = chatWindow.scrollHeight; }
+    </script>
+
+</body>
+
+</html>

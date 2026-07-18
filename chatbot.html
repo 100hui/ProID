@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pause&Pulse - Anonymous Chatbot</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F5FB;
+        }
+
+        .brand-purple {
+            color: #5D43DA;
+        }
+
+        .bg-brand-purple {
+            background-color: #5D43DA;
+        }
+
+        .bg-brand-purple-light {
+            background-color: #F0EDFF;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Keyframe styling for the bouncing typing loading dots mimic */
+        .typing-dot {
+            animation: bounce 1.4s infinite both;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <!-- Mobile Device Frame Container -->
+    <div
+        class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
+
+        <!-- Status Bar Mimic -->
+        <div
+            class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10 bg-white/80 backdrop-blur-md">
+            <span>9:41</span>
+            <div class="flex items-center space-x-1.5">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full text-base"></i>
+            </div>
+        </div>
+
+        <!-- Chat Header Area -->
+        <div
+            class="w-full px-5 py-3 border-b border-purple-100/60 bg-white/80 backdrop-blur-md flex justify-between items-center z-10 shadow-sm">
+            <div class="flex items-center space-x-3">
+                <a href="ally-network.html" class="text-gray-500 hover:text-purple-600 transition-colors pr-1">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </a>
+                <div
+                    class="w-9 h-9 bg-brand-purple-light text-brand-purple rounded-xl flex items-center justify-center text-base">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs font-black text-gray-900">Support Ally Bot</h2>
+                    <span class="text-[9px] font-bold text-emerald-600 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Anonymous Mode
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrollable Message Stream Window Container -->
+        <div id="chatWindow" class="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar bg-[#FDFDFF]">
+
+            <!-- System Disclaimer Notice Bubble -->
+            <div class="text-center px-4 py-1">
+                <p
+                    class="text-[10px] text-gray-400 bg-gray-100 rounded-xl py-1.5 px-3 inline-block max-w-[90%] leading-normal font-medium">
+                    🔒 I am an automated assistant, not a human counselor. Your identity remains unrecorded and private.
+                </p>
+            </div>
+
+            <!-- Bot Message 1: Initial Greeting Trigger -->
+            <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in">
+                <div
+                    class="w-7 h-7 bg-brand-purple-light text-brand-purple rounded-lg flex items-center justify-center text-xs mt-0.5 flex-shrink-0 shadow-inner">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div
+                    class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                    Hi there! 👋 I am here to help you safely organize your thoughts and reflect on any digital
+                    situations or stress you are currently facing online.
+                </div>
+            </div>
+
+            <!-- Bot Message 2: Call to Action Prompt Trigger -->
+            <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in" style="animation-delay: 0.3s;">
+                <div
+                    class="w-7 h-7 bg-brand-purple-light text-brand-purple rounded-lg flex items-center justify-center text-xs mt-0.5 flex-shrink-0 shadow-inner">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div
+                    class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                    What is on your mind? Feel free to describe what happened or any text message choices you are
+                    worried about.
+                </div>
+            </div>
+
+            <!-- Dynamic Mock Typing Anim Box (Hidden initially) -->
+            <div id="typingIndicator" class="flex items-start space-x-2.5 max-w-[85%] hidden">
+                <div
+                    class="w-7 h-7 bg-brand-purple-light text-brand-purple rounded-lg flex items-center justify-center text-xs mt-0.5 flex-shrink-0 shadow-inner">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div
+                    class="bg-white border border-purple-100/60 px-4 py-3 rounded-[20px] rounded-tl-sm shadow-sm flex space-x-1 items-center justify-center h-8">
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full typing-dot"></div>
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full typing-dot"></div>
+                    <div class="w-1.5 h-1.5 bg-purple-400 rounded-full typing-dot"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Chat Input Action Controller Dock Footer -->
+        <div class="p-3 bg-white border-t border-purple-100/80 rounded-b-[48px] pb-6 flex items-center space-x-2">
+            <div class="flex-1 relative flex items-center bg-gray-50 border border-purple-100 rounded-2xl px-3.5 py-2">
+                <input id="messageInput" type="text" placeholder="Type an anonymous question..."
+                    class="w-full bg-transparent border-none outline-none text-xs text-gray-700 pr-8 placeholder-gray-400 font-medium"
+                    onkeydown="if(event.key === 'Enter') sendMessage()">
+                <!-- Absolute attachment paperclip icon decoration -->
+                <button class="absolute right-3.5 text-gray-400 hover:brand-purple transition-colors">
+                    <i class="fa-solid fa-paperclip text-sm"></i>
+                </button>
+            </div>
+            <!-- Send Submitting Button Trigger -->
+            <button onclick="sendMessage()"
+                class="w-9 h-9 bg-brand-purple text-white rounded-xl flex items-center justify-center shadow-md shadow-purple-600/10 hover:opacity-95 transition-all active:scale-95 flex-shrink-0">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- PROTOCRIPT SIMULATOR PLAYLOAD -->
+    <script>
+        const chatWindow = document.getElementById('chatWindow');
+        const messageInput = document.getElementById('messageInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        let automatedResponseSent = false;
+
+        function sendMessage() {
+            const userText = messageInput.value.trim();
+            if (userText === "") return;
+
+            // 1. Render user message bubble block in chat stream UI
+            const userMsgHtml = `
+                <div class="flex items-start justify-end space-x-2.5 w-full">
+                    <div class="bg-brand-purple text-white p-3 rounded-[20px] rounded-tr-sm shadow-sm text-xs max-w-[75%] leading-relaxed font-medium">
+                        ${userText}
+                    </div>
+                </div>
+            `;
+
+            // Append and clear text window entries
+            chatWindow.insertAdjacentHTML('beforeend', userMsgHtml);
+            messageInput.value = "";
+            scrollToBottom();
+
+            // 2. Trigger simulated typing delays followed by the static protocol response
+            if (!automatedResponseSent) {
+                automatedResponseSent = true;
+
+                // Unhide the bouncing loader dot box element
+                setTimeout(() => {
+                    typingIndicator.classList.remove('hidden');
+                    chatWindow.appendChild(typingIndicator); // Moves it down to bottom boundary layer
+                    scrollToBottom();
+                }, 400);
+
+                // Hide loader and print standard response payload blocks
+                setTimeout(() => {
+                    typingIndicator.classList.add('hidden');
+
+                    const responseHtml = `
+                        <!-- Part 1: Emotional Support -->
+                        <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in mb-3">
+                            <div class="w-7 h-7 bg-brand-purple-light text-brand-purple rounded-lg flex items-center justify-center text-xs mt-0.5 flex-shrink-0 shadow-inner">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                                It is completely valid to feel incredibly stressed out by this! Getting cut off from your team suddenly causes huge anxiety, but take a deep breath—your feelings are entirely normal, you aren't going to fail, and we can handle this calmly.
+                            </div>
+                        </div>
+                        
+                        <!-- Part 2: Solution -->
+                        <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in mb-3">
+                            <div class="w-7 h-7 bg-brand-purple-light text-brand-purple rounded-lg flex items-center justify-center text-xs mt-0.5 flex-shrink-0 shadow-inner">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium">
+                                Don't panic or message them angrily. Send a private, mature text directly to your group leader: <br><br>
+                                <span class="italic text-gray-600 block border-l-2 border-purple-200 pl-2">"Hey, sorry my submission was late. Here is my completed part. Can you add me back so we can wrap up the slides smoothly?"</span>
+                            </div>
+                        </div>
+
+                        <!-- Part 3: Pathways -->
+                        <div class="flex items-start space-x-2.5 max-w-[85%] animate-fade-in">
+                            <div class="w-7 h-7 bg-brand-purple-light text-brand-purple rounded-lg flex items-center justify-center text-xs mt-0.5 flex-shrink-0 shadow-inner">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-white border border-purple-100/60 p-3 rounded-[20px] rounded-tl-sm shadow-sm text-xs text-gray-800 leading-relaxed font-medium space-y-3">
+                                <p class="font-bold text-purple-900">🚀 Here are 2 clean pathways you can try right now:</p>
+                                <p>• Check out our <a href="similar-cases.html" class="brand-purple underline font-bold">Similar Cases Portal</a> to see how other poly peers cleanly resolved group project chat lockouts without escalating the social friction into campus drama.</p>
+                                <p>• If you would prefer low-pressure advice from a real senior peer who knows your module structures inside out, click to securely chat with a badge-verified <a href="ally-chat.html" class="brand-purple underline font-bold">Student Ally</a>.</p>
+        
+                                <!-- Direct Guided Next Step Action -->
+                                <a href="similar-cases.html" class="w-full bg-brand-purple text-white text-[11px] py-2 px-3 rounded-xl font-bold flex items-center justify-center gap-1.5 shadow-sm mt-2 block text-center">
+                                    Go to Stage 2: Browse Similar Cases <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    chatWindow.insertAdjacentHTML('beforeend', responseHtml);
+                    scrollToBottom();
+                }, 2000); // 2 second mock processing window
+            }
+        }
+
+        function scrollToBottom() {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
+
+</body>
+
+</html>

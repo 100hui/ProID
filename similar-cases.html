@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pause&Pulse - Similar Cases</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F5FB;
+        }
+
+        .brand-purple {
+            color: #5D43DA;
+        }
+
+        .bg-brand-purple {
+            background-color: #5D43DA;
+        }
+
+        .bg-brand-purple-light {
+            background-color: #F0EDFF;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
+
+    <!-- Mobile Device Frame Container -->
+    <div
+        class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
+
+        <!-- Status Bar Mimic -->
+        <div
+            class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10 bg-white/80 backdrop-blur-md">
+            <span>9:41</span>
+            <div class="flex items-center space-x-1.5">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full text-base"></i>
+            </div>
+        </div>
+
+        <!-- Header Navigation Area -->
+        <div
+            class="w-full px-5 py-3 border-b border-purple-100/60 bg-white/80 backdrop-blur-md flex items-center space-x-3 z-10 shadow-sm">
+            <a href="ally-network.html" class="text-gray-500 hover:text-purple-600 transition-colors pr-1">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </a>
+            <div>
+                <h2 class="text-sm font-black text-gray-900">Similar Cases Portal</h2>
+                <p class="text-[10px] text-gray-400 font-medium">Read anonymous composite student stories</p>
+            </div>
+        </div>
+
+        <!-- Scrollable Content Feed -->
+        <div class="flex-1 overflow-y-auto px-4 py-4 space-y-4 no-scrollbar bg-[#FDFDFF]">
+
+            <!-- Category Filter Tabs System -->
+            <div class="flex space-x-2 overflow-x-auto no-scrollbar pb-1">
+                <button onclick="filterCategory('all')" id="tab-all"
+                    class="text-[10px] font-black bg-brand-purple text-white px-3.5 py-1.5 rounded-full border border-purple-200 shadow-sm whitespace-nowrap transition-all">All
+                    Stories</button>
+                <button onclick="filterCategory('group')" id="tab-group"
+                    class="text-[10px] font-bold bg-white text-gray-500 px-3.5 py-1.5 rounded-full border border-gray-200/60 whitespace-nowrap transition-all hover:text-purple-600">👥
+                    Group Conflict</button>
+                <button onclick="filterCategory('online')" id="tab-online"
+                    class="text-[10px] font-bold bg-white text-gray-500 px-3.5 py-1.5 rounded-full border border-gray-200/60 whitespace-nowrap transition-all hover:text-purple-600">📱
+                    Online Feeds</button>
+            </div>
+
+            <!-- Case Card 1: Group Project Chat Lockout -->
+            <div class="case-card bg-white border border-purple-100/60 rounded-[24px] p-4 shadow-sm space-y-3 transition-all duration-300"
+                data-cat="group">
+                <div class="flex justify-between items-center">
+                    <span
+                        class="text-[9px] font-black bg-purple-50 text-brand-purple px-2.5 py-1 rounded-lg uppercase tracking-wider border border-purple-100/40">👥
+                        Group Conflict</span>
+                    <span class="text-[10px] text-gray-400 font-bold"><i class="fa-regular fa-eye mr-1"></i> 142
+                        reads</span>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-black text-gray-900 leading-snug">Kicked from project group chat after
+                        missing task deadline</h3>
+                    <p class="text-[11px] text-gray-400 mt-1 line-clamp-2">A Year 2 student submitted their module
+                        presentation slides 4 hours late due to family matters, resulting in team members locking them
+                        out of the main WhatsApp chat...</p>
+                </div>
+
+                <!-- Accordion Expandable Container Area -->
+                <div class="hidden-content hidden border-t border-gray-100 pt-3 mt-1 space-y-3">
+                    <div
+                        class="bg-purple-50/40 rounded-xl p-3 border border-purple-100/30 text-[11px] text-gray-600 leading-relaxed">
+                        <strong class="text-purple-900 font-bold block mb-0.5">💡 The Strategy Implemented:</strong>
+                        Instead of messaging the team aggressively or blowing up the chat, the student privately sent
+                        the complete finished work component directly to the project lead with a polite, direct apology
+                        statement emphasizing professional completion parameters.
+                    </div>
+                    <div
+                        class="bg-emerald-50/50 rounded-xl p-3 border border-emerald-100/30 text-[11px] text-gray-600 leading-relaxed">
+                        <strong class="text-emerald-800 font-bold block mb-0.5">🎉 The Resolution Outcome:</strong>
+                        The group leader verified the high quality of the work component, added the student back to the
+                        chat loop within 2 hours, and the module presentation was submitted on time with full peer
+                        validation marks intact.
+                    </div>
+                </div>
+
+                <!-- Expand Button Trigger Toggle -->
+                <button onclick="toggleCard(this)"
+                    class="w-full text-center text-[10px] font-extrabold brand-purple pt-1 border-t border-gray-50 flex items-center justify-center gap-1.5 focus:outline-none">
+                    <span>Read Full Case Study</span> <i
+                        class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200"></i>
+                </button>
+            </div>
+
+            <!-- Case Card 2: False Campus Rumor spread -->
+            <div class="case-card bg-white border border-purple-100/60 rounded-[24px] p-4 shadow-sm space-y-3 transition-all duration-300"
+                data-cat="online">
+                <div class="flex justify-between items-center">
+                    <span
+                        class="text-[9px] font-black bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-lg uppercase tracking-wider border border-indigo-100/40">📱
+                        Online Feeds</span>
+                    <span class="text-[10px] text-gray-400 font-bold"><i class="fa-regular fa-eye mr-1"></i> 98
+                        reads</span>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-black text-gray-900 leading-snug">Manipulated screenshot shared anonymously
+                        inside campus chat channels</h3>
+                    <p class="text-[11px] text-gray-400 mt-1 line-clamp-2">An edited chat snippet was circulated
+                        anonymously on a community channel, incorrectly framing a student for reporting group peers for
+                        academic misconduct...</p>
+                </div>
+
+                <!-- Accordion Expandable Container Area -->
+                <div class="hidden-content hidden border-t border-gray-100 pt-3 mt-1 space-y-3">
+                    <div
+                        class="bg-purple-50/40 rounded-xl p-3 border border-purple-100/30 text-[11px] text-gray-600 leading-relaxed">
+                        <strong class="text-purple-900 font-bold block mb-0.5">💡 The Strategy Implemented:</strong>
+                        The targeted student immediately took timestamped screenshots of the original full chat logs as
+                        clean objective counter-evidence. They quietly engaged an official campus Student Ally to
+                        document the digital trail without responding publicly.
+                    </div>
+                    <div
+                        class="bg-emerald-50/50 rounded-xl p-3 border border-emerald-100/30 text-[11px] text-gray-600 leading-relaxed">
+                        <strong class="text-emerald-800 font-bold block mb-0.5">🎉 The Resolution Outcome:</strong>
+                        The channel administrators were provided with the authenticated evidence logs and took down the
+                        malicious post instantly. The anonymous poster was identified and handled via student management
+                        guidelines.
+                    </div>
+                </div>
+
+                <!-- Expand Button Trigger Toggle -->
+                <button onclick="toggleCard(this)"
+                    class="w-full text-center text-[10px] font-extrabold brand-purple pt-1 border-t border-gray-50 flex items-center justify-center gap-1.5 focus:outline-none">
+                    <span>Read Full Case Study</span> <i
+                        class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Insert this inside similar-cases.html directly above the bottom safe space tag div -->
+        <div class="p-4 bg-purple-50 rounded-[24px] border border-purple-100/60 mx-4 my-2 text-center space-y-2.5">
+            <p class="text-[11px] text-gray-500 font-medium px-2">Still feeling unsure about your group project dynamic?
+                Talk to an experienced peer mentor next.</p>
+            <a href="ally-chat.html"
+                class="w-full bg-brand-purple text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 transition-all active:scale-95">
+                Proceed to Stage 3: Connect with Ally <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </a>
+        </div>
+
+        <!-- Optional Bottom Informational Safe Space Tag -->
+        <div
+            class="p-3 bg-gray-50 text-center text-[10px] text-gray-400 font-medium border-t border-purple-100/40 pb-5">
+            💡 Stories are modified and blended to ensure absolute student confidentiality.
+        </div>
+
+    </div>
+
+    <!-- ACCORDION AND FILTER CONTROL SCRIPT -->
+    <script>
+        // Toggles accordion visibility smoothly
+        function toggleCard(btnElement) {
+            const card = btnElement.closest('.case-card');
+            const hiddenContent = card.querySelector('.hidden-content');
+            const icon = btnElement.querySelector('i');
+            const spanText = btnElement.querySelector('span');
+
+            if (hiddenContent.classList.contains('hidden')) {
+                hiddenContent.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                spanText.innerText = 'Collapse Case Details';
+            } else {
+                hiddenContent.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+                spanText.innerText = 'Read Full Case Study';
+            }
+        }
+
+        // Filters card items dynamically via categories
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.case-card');
+            const tabs = ['all', 'group', 'online'];
+
+            // Toggle active style button styling matrix
+            tabs.forEach(tabName => {
+                const activeTabButton = document.getElementById(`tab-${tabName}`);
+                if (tabName === category) {
+                    activeTabButton.className = "text-[10px] font-black bg-brand-purple text-white px-3.5 py-1.5 rounded-full border border-purple-200 shadow-sm whitespace-nowrap transition-all";
+                } else {
+                    activeTabButton.className = "text-[10px] font-bold bg-white text-gray-500 px-3.5 py-1.5 rounded-full border border-gray-200/60 whitespace-nowrap transition-all hover:text-purple-600";
+                }
+            });
+
+            // Toggle element visibility layers smoothly
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.cat === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
