@@ -59,6 +59,93 @@
     <div
         class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
 
+        <!-- 🔔 SYSTEM PUSH NOTIFICATION POP-UP WINDOW -->
+        <div id="pushNotification"
+            class="absolute top-14 left-4 right-4 bg-white/90 backdrop-blur-md rounded-2xl p-3 shadow-2xl z-50 transform -translate-y-40 opacity-0 transition-all duration-500 cursor-pointer border border-gray-200/50"
+            onclick="triggerReflexChallenge()">
+            <div class="flex items-start space-x-3">
+                <div
+                    class="w-9 h-9 bg-red-500 text-white rounded-xl flex items-center justify-center text-sm shadow-md flex-shrink-0 animate-pulse">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[11px] font-bold text-red-600 tracking-wide uppercase">⚡ BREAKING NEWS</span>
+                        <span class="text-[9px] text-gray-400 font-medium">Just Now</span>
+                    </div>
+                    <h4 class="text-xs font-extrabold text-gray-900 mt-0.5 truncate">2026 WORLD CUP MATCH CANCELED?!
+                    </h4>
+                    <p class="text-[10px] text-gray-500 mt-0.5 line-clamp-2">Leaked reports state final match suspended
+                        due to system anomalies. Check your ticket codes now...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🥊 SURPRISE REFLEX INTERACTIVE MODAL FULLSCREEN INTERFACE -->
+        <div id="reflexModal"
+            class="absolute inset-0 bg-slate-950/95 z-50 hidden flex flex-col justify-between p-6 text-white animate-fade-in">
+            <div class="space-y-4 mt-8">
+                <div class="flex items-center space-x-2">
+                    <span
+                        class="bg-red-500 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Reflex
+                        Mode</span>
+                    <span class="text-xs font-bold text-amber-400"><i
+                            class="fa-solid fa-stopwatch animate-spin mr-1"></i> Time Attack</span>
+                </div>
+                <h2 class="text-xl font-black tracking-tight leading-tight">Surprise Reflex Challenge ⚽</h2>
+                <p class="text-xs text-gray-400 leading-relaxed">This urgent viral message is gaining traction across
+                    campus chats right now. What is your choice?</p>
+
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-4 font-mono text-xs space-y-3 mt-4">
+                    <p class="text-red-400 font-bold"><i class="fa-solid fa-circle text-[8px] mr-1.5 animate-ping"></i>
+                        LIVE TRENDING TELEGRAM ADS:</p>
+                    <p class="text-gray-200 leading-relaxed">
+                        "URGENT: World Cup finals officially postponed! Click to secure your emergency refund package
+                        value immediately at
+                        <a href="#" onclick="handleLinkClick(event)"
+                            class="text-blue-400 underline cursor-pointer font-bold break-all block mt-1">
+                            http://fifa2026-refund-portal.sg
+                        </a>"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Options Choices System -->
+            <div class="space-y-3 mb-8">
+                <button onclick="handleReflexChoice('share')"
+                    class="w-full bg-white/10 hover:bg-white/20 border border-white/20 py-3.5 rounded-2xl font-bold text-xs transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-share text-gray-300"></i> Forward to Class Group Chats
+                </button>
+                <button onclick="handleReflexChoice('report')"
+                    class="w-full bg-amber-500 text-slate-950 py-3.5 rounded-2xl font-black text-xs shadow-xl shadow-amber-500/10 hover:bg-amber-400 transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> Hold & Report Post as Suspicious
+                </button>
+            </div>
+        </div>
+        <!-- 📱 MOBILE DIALOG POP-UP BOX FOR CORRECT/WRONG FEEDBACK -->
+        <div id="resultPopup"
+            class="absolute inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-6 backdrop-blur-sm animate-fade-in">
+            <div
+                class="w-full max-w-[280px] bg-white rounded-[32px] p-5 shadow-2xl flex flex-col items-center text-center space-y-4 border border-purple-100">
+                <div id="popupIconBg"
+                    class="w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-inner">
+                    <span id="popupEmoji">🎉</span>
+                </div>
+                <div class="space-y-1">
+                    <h3 id="popupHeader text-gray-900" class="text-base font-black tracking-tight">Correct Choice!</h3>
+                    <p id="popupDesc text-gray-500" class="text-xs leading-relaxed px-1">Excellent reflex control.
+                        Reporting prevents viral chaos.</p>
+                </div>
+                <div id="popupPointsTag" class="text-[11px] font-black px-3 py-1 rounded-full">
+                    +15 Points Awarded!
+                </div>
+                <button onclick="dismissResultPopup()"
+                    class="w-full bg-brand-purple text-white py-2.5 rounded-xl font-bold text-xs shadow-md shadow-purple-600/10 active:scale-95 transition-all">
+                    Continue
+                </button>
+            </div>
+        </div>
+
         <!-- Status Bar Mimic -->
         <div class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10">
             <span>9:41</span>
@@ -292,6 +379,10 @@
         let score = 0;
         let isWaitingForFeedback = false;
 
+        // Timer references
+        let countdownTimer;
+        let timeLeft = 10;
+
         // Lightbox Functions
         function openLightbox(imgSrc, captionText) {
             const lightbox = document.getElementById('lightbox');
@@ -337,11 +428,9 @@
         }
 
         function dismissFeedback() {
-            // Dismiss banner
             feedbackBanner.className = "absolute bottom-24 left-5 right-5 bg-white border rounded-[24px] p-4 shadow-xl z-40 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none";
             isWaitingForFeedback = false;
 
-            // Now actually transition the cards visually after they read the feedback
             const cardElement = document.getElementById(`card${currentCardIndex + 1}`);
             if (cardElement) {
                 cardElement.style.display = 'none';
@@ -359,7 +448,7 @@
             card.addEventListener('touchstart', dragStart, { passive: true });
 
             function dragStart(e) {
-                if (isWaitingForFeedback) return; // Prevent interaction during feedback stage
+                if (isWaitingForFeedback) return;
                 if (e.target.closest('[onclick]')) return;
                 isDragging = true;
                 card.classList.add('dragging');
@@ -374,15 +463,13 @@
                 currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
                 const diffX = currentX - startX;
 
-                // Rotational physics for Tinder-like swiping
                 const rotation = diffX / 10;
                 card.style.transform = `translateX(${diffX}px) rotate(${rotation}deg)`;
 
-                // Dynamic UI color feedback on drag thresholds
                 if (diffX > 60) {
-                    card.style.boxShadow = '0 20px 25px -5px rgba(16, 185, 129, 0.3)'; // Green glow (Safe)
+                    card.style.boxShadow = '0 20px 25px -5px rgba(16, 185, 129, 0.3)';
                 } else if (diffX < -60) {
-                    card.style.boxShadow = '0 20px 25px -5px rgba(239, 68, 68, 0.3)'; // Red glow (Sus)
+                    card.style.boxShadow = '0 20px 25px -5px rgba(239, 68, 68, 0.3)';
                 } else {
                     card.style.boxShadow = '';
                 }
@@ -402,35 +489,22 @@
                 } else if (diffX < -110) {
                     swipe('sus');
                 } else {
-                    // Reset to center if threshold not met
                     card.style.transform = '';
                     card.style.boxShadow = '';
                 }
             }
 
             function swipe(direction) {
-                if (direction === 'safe') {
-                    card.style.transform = 'translateX(500px) rotate(30deg)';
-                } else {
-                    card.style.transform = 'translateX(-500px) rotate(-30deg)';
-                }
+                card.style.transform = direction === 'safe' ? 'translateX(500px) rotate(30deg)' : 'translateX(-500px) rotate(-30deg)';
                 card.style.opacity = '0';
 
-                // Evaluate answer
                 const isCorrect = card.dataset.correct === direction;
                 if (isCorrect) {
                     score++;
                 }
 
-                // Update score counter on header instantly
                 scoreDisplay.innerText = `Score: ${score}/3`;
-
-                // PRE-EMPTIVE FIX: If this is the last card swiped, update the final score text on the end screen *immediately* before feedback displays
-                if (currentCardIndex >= cards.length - 1) {
-                    finalPoints.innerText = `+${score * 10} Points Awarded!`;
-                }
-
-                // Show feedback popup instantly while keeping card off-screen
+                finalPoints.innerText = `+${score * 10} Points Awarded!`;
                 showFeedback(isCorrect, card.dataset.correct);
             }
         });
@@ -438,7 +512,6 @@
         function advanceDeck() {
             currentCardIndex++;
 
-            // Re-stack standard 3D depth deck scale layout positioning with solid opacity
             if (currentCardIndex === 1) {
                 document.getElementById('card2').style.transform = 'scale(1) translate-y-0';
                 document.getElementById('card2').classList.add('z-30');
@@ -448,7 +521,106 @@
                 document.getElementById('card3').style.transform = 'scale(1) translate-y-0';
                 document.getElementById('card3').classList.add('z-30');
                 document.getElementById('card3').style.opacity = '1';
+            } else if (currentCardIndex >= cards.length) {
+                setTimeout(() => {
+                    const push = document.getElementById('pushNotification');
+                    push.className = "absolute top-14 left-4 right-4 bg-white rounded-2xl p-3 shadow-2xl z-50 transform translate-y-0 opacity-100 transition-all duration-500 cursor-pointer border border-gray-200/50";
+                }, 1000);
             }
+        }
+
+        // Functions to manage the interactive Reflex popup actions
+        function triggerReflexChallenge() {
+            document.getElementById('pushNotification').className = "absolute top-14 left-4 right-4 bg-white rounded-2xl p-3 shadow-2xl z-50 transform -translate-y-40 opacity-0 transition-all duration-500 pointer-events-none";
+            document.getElementById('reflexModal').classList.remove('hidden');
+
+            // Start the 10-second countdown loop
+            startReflexTimer();
+        }
+
+        function startReflexTimer() {
+            timeLeft = 10;
+            const timerLabel = document.querySelector('#reflexModal .fa-stopwatch').parentNode;
+
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                timerLabel.innerHTML = `<i class="fa-solid fa-stopwatch text-amber-400 mr-1 animate-spin"></i> Time Left: ${timeLeft}s`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    handleReflexChoice('timeout');
+                }
+            }, 1000);
+        }
+
+        // Clicking the virus link inside the mockup image text zones
+        function handleLinkClick(event) {
+            // Stops image dragging logic from overriding the tap click trigger
+            event.stopPropagation();
+            clearInterval(countdownTimer);
+            handleReflexChoice('hacked');
+        }
+
+        function handleReflexChoice(action) {
+            clearInterval(countdownTimer);
+            document.getElementById('reflexModal').classList.add('hidden');
+            const popup = document.getElementById('resultPopup');
+
+            if (action === 'report') {
+                score++;
+                const totalCalculatedPoints = (score * 10) + 5;
+
+                document.getElementById('popupIconBg').className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl bg-emerald-50 text-emerald-600 shadow-inner";
+                document.getElementById('popupEmoji').innerText = "🎉";
+                document.getElementById('popupPointsTag').className = "text-[11px] font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full";
+                document.getElementById('popupPointsTag').innerText = "+15 Points Awarded!";
+                popup.querySelector('h3').innerText = "Correct Choice!";
+                popup.querySelector('p').innerText = "Excellent reflex control. Holding and reporting stops viral scams.";
+
+                scoreDisplay.innerText = `Score: ${score}/4`;
+                finalPoints.innerText = `+${totalCalculatedPoints} Points Awarded!`;
+            } else if (action === 'hacked') {
+                const totalCalculatedPoints = score * 10;
+
+                document.getElementById('popupIconBg').className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl bg-red-100 text-red-600 shadow-inner animate-bounce";
+                document.getElementById('popupEmoji').innerText = "☠️";
+                document.getElementById('popupPointsTag').className = "text-[11px] font-black bg-red-200 text-red-900 px-3 py-1 rounded-full";
+                document.getElementById('popupPointsTag').innerText = "+0 Points (HACKED!)";
+                popup.querySelector('h3').innerText = "Device Compromised!";
+                popup.querySelector('p').innerText = "Oh no! Clicking unverified links downloaded malware. Your device security was breached.";
+
+                scoreDisplay.innerText = `Score: ${score}/4`;
+                finalPoints.innerText = `+${totalCalculatedPoints} Points Awarded!`;
+            } else if (action === 'timeout') {
+                const totalCalculatedPoints = score * 10;
+
+                document.getElementById('popupIconBg').className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl bg-amber-100 text-amber-700 shadow-inner";
+                document.getElementById('popupEmoji').innerText = "⏳";
+                document.getElementById('popupPointsTag').className = "text-[11px] font-black bg-amber-200 text-amber-900 px-3 py-1 rounded-full";
+                document.getElementById('popupPointsTag').innerText = "+0 Points (Time's Up)";
+                popup.querySelector('h3').innerText = "Bystander Paralysis!";
+                popup.querySelector('p').innerText = "You hesitated too long! Inaction allowed the dangerous scam to spread across campus group chats.";
+
+                scoreDisplay.innerText = `Score: ${score}/4`;
+                finalPoints.innerText = `+${totalCalculatedPoints} Points Awarded!`;
+            } else {
+                const totalCalculatedPoints = score * 10;
+
+                document.getElementById('popupIconBg').className = "w-14 h-14 rounded-full flex items-center justify-center text-2xl bg-rose-50 text-rose-600 shadow-inner";
+                document.getElementById('popupEmoji').innerText = "🚨";
+                document.getElementById('popupPointsTag').className = "text-[11px] font-black bg-rose-100 text-rose-800 px-3 py-1 rounded-full";
+                document.getElementById('popupPointsTag').innerText = "+0 Points Awarded";
+                popup.querySelector('h3').innerText = "Whoops, Action Failed";
+                popup.querySelector('p').innerText = "Impulsively sharing unverified rumors accelerates panic.";
+
+                scoreDisplay.innerText = `Score: ${score}/4`;
+                finalPoints.innerText = `+${totalCalculatedPoints} Points Awarded!`;
+            }
+            popup.classList.remove('hidden');
+        }
+
+        function dismissResultPopup() {
+            document.getElementById('resultPopup').classList.add('hidden');
         }
     </script>
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,45 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F6F5FB;
         }
-
-        .brand-purple {
-            color: #5D43DA;
-        }
-
-        .bg-brand-purple {
-            background-color: #5D43DA;
-        }
-
-        .bg-brand-purple-light {
-            background-color: #F0EDFF;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .brand-purple { color: #5D43DA; }
+        .bg-brand-purple { background-color: #5D43DA; }
+        .bg-brand-purple-light { background-color: #F0EDFF; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-
 <body class="flex justify-center items-center min-h-screen p-0 sm:p-4">
 
     <!-- Mobile Device Frame Container -->
-    <div
-        class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
-
+    <div class="w-full max-w-[412px] h-[892px] bg-[#F9F8FD] rounded-[48px] shadow-2xl overflow-hidden border-[8px] border-gray-900 relative flex flex-col">
+        
         <!-- Status Bar Mimic -->
         <div class="w-full px-8 pt-4 pb-2 flex justify-between items-center text-xs font-semibold text-gray-700 z-10">
             <span>9:41</span>
@@ -58,147 +38,68 @@
         </div>
 
         <!-- Scrollable Content Area -->
-        <div class="flex-1 overflow-y-auto px-5 pb-24 pt-2 space-y-6 no-scrollbar">
-
+        <div class="flex-1 px-5 pb-24 pt-2 flex flex-col justify-between no-scrollbar">
+            
             <!-- Top App Header Section -->
             <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold brand-purple tracking-tight">Spotter Hub</span>
-                <!-- Quick points counter for immediate validation -->
-                <div
-                    class="bg-white px-3 py-1.5 rounded-full shadow-sm border border-purple-100 flex items-center space-x-1">
+                <div class="bg-white px-3 py-1.5 rounded-full shadow-sm border border-purple-100 flex items-center space-x-1">
                     <span class="text-xs font-bold text-gray-500">Wallet:</span>
                     <span class="text-xs font-extrabold brand-purple">380 pts</span>
                 </div>
             </div>
 
-            <!-- Header Title -->
-            <div>
-                <h1 class="text-2xl font-bold text-gray-900 tracking-tight flex items-center gap-1.5">
-                    Choose Your Arena 🎯
-                </h1>
-                <p class="text-xs text-gray-500 mt-0.5">Train your reflexes, spot the red flags, and protect your
-                    circle.</p>
-            </div>
-
-            <!-- GAME MODE 1: Swipe Mode (Deeper Emerald Gradient for High Contrast) -->
-            <div
-                class="bg-gradient-to-br from-teal-800 to-emerald-950 p-5 rounded-[28px] shadow-lg shadow-emerald-950/20 flex flex-col justify-between relative text-white">
-                <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <div
-                            class="w-11 h-11 bg-white/10 text-emerald-300 rounded-2xl flex items-center justify-center text-lg shadow-inner">
-                            <i class="fa-solid fa-left-right"></i>
-                        </div>
-                        <span
-                            class="text-[10px] font-extrabold text-emerald-300 bg-emerald-900/60 px-2.5 py-1 rounded-full uppercase tracking-wider border border-emerald-500/30">Daily
-                            Circuit</span>
-                    </div>
-
-                    <h2 class="text-lg font-extrabold tracking-tight">Swipe Mode: Spot the Red Flag</h2>
-                    <p class="text-xs text-emerald-100/90 mt-2 font-medium leading-relaxed">
-                        Swipe through rapid examples of fake SMS, suspicious links, and edited posts. Decide instantly
-                        if they are safe or sus!
+            <!-- CENTERED HERO MODE SELECTOR -->
+            <div class="flex-1 flex flex-col items-center justify-center text-center px-4 space-y-6">
+                <!-- Large Colorful Action Icon -->
+                <div class="w-20 h-20 bg-gradient-to-br from-teal-500 to-emerald-600 text-white rounded-[28px] flex items-center justify-center text-3xl shadow-xl shadow-emerald-500/20 animate-pulse">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-black text-gray-900 tracking-tight">Spot the Red Flag Arena</h2>
+                    <p class="text-xs text-gray-500 max-w-[280px] mx-auto leading-relaxed">
+                        Train your mental filters against scam messages, toxic edits, and hidden cyber threats circulating campus networks.
                     </p>
-
-                    <!-- Features checklist with darkened high-contrast tags -->
-                    <div class="mt-4 flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-bold bg-emerald-900/40 text-emerald-200 px-2.5 py-1 rounded-lg border border-emerald-500/20">💬
-                            Fake SMS</span>
-                        <span
-                            class="text-[10px] font-bold bg-emerald-900/40 text-emerald-200 px-2.5 py-1 rounded-lg border border-emerald-500/20">🔗
-                            Sus URLs</span>
-                        <span
-                            class="text-[10px] font-bold bg-emerald-900/40 text-emerald-200 px-2.5 py-1 rounded-lg border border-emerald-500/20">📱
-                            Edited Posts</span>
-                    </div>
                 </div>
 
-                <!-- Action Button with high-contrast text color -->
-                <button
-                    class="w-full bg-emerald-400 text-emerald-950 py-3 rounded-2xl font-extrabold text-xs shadow-md hover:bg-emerald-300 transition-all mt-5 active:scale-[0.99]">
-                    <a href="swipe.html" class="w-full h-full block">
-                        Launch Swipe Arena (+10 pts)
-                    </a>
-                </button>
+                <!-- Big Centered Launch Button -->
+                <a href="swipe.html" class="w-full max-w-[280px] bg-gradient-to-r from-teal-600 to-emerald-600 text-white py-4 rounded-2xl font-extrabold text-sm shadow-lg shadow-emerald-600/30 text-center hover:opacity-95 transition-all active:scale-[0.98] block">
+                    Launch Swipe Session (+10 pts)
+                </a>
             </div>
 
-            <!-- GAME MODE 2: Surprise Reflex Challenge (Deeper Crimson/Plum Gradient for High Contrast) -->
-            <div
-                class="bg-gradient-to-br from-rose-900 to-amber-950 p-5 rounded-[28px] shadow-lg shadow-rose-950/20 flex flex-col justify-between relative text-white">
-                <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <div
-                            class="w-11 h-11 bg-white/10 text-rose-300 rounded-2xl flex items-center justify-center text-lg shadow-inner">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <span
-                            class="text-[10px] font-extrabold text-rose-300 bg-rose-900/60 px-2.5 py-1 rounded-full uppercase tracking-wider border border-rose-500/30">Time
-                            Attack</span>
-                    </div>
-
-                    <h2 class="text-lg font-extrabold tracking-tight">Surprise Reflex Challenge</h2>
-                    <p class="text-xs text-rose-100/90 mt-2 font-medium leading-relaxed">
-                        A realistic mock notification will burst onto your screen featuring viral news. Test your
-                        reflexes: will you pause and report, or impulsively share?
-                    </p>
-
-                    <!-- Features checklist with darkened high-contrast tags -->
-                    <div class="mt-4 flex flex-wrap gap-1.5">
-                        <span
-                            class="text-[10px] font-bold bg-rose-900/40 text-rose-200 px-2.5 py-1 rounded-lg border border-rose-500/20">🔥
-                            Viral News</span>
-                        <span
-                            class="text-[10px] font-bold bg-rose-900/40 text-rose-200 px-2.5 py-1 rounded-lg border border-rose-500/20">⏱️
-                            3s Window</span>
-                    </div>
-                </div>
-
-                <!-- Action Button with high-contrast text color -->
-                <button
-                    class="w-full bg-rose-400 text-rose-950 py-3 rounded-2xl font-extrabold text-xs shadow-md hover:bg-rose-300 transition-all mt-5 active:scale-[0.99]">
-                    Start Reflex Check (+15 pts)
-                </button>
-            </div>
-
-            <!-- System Fixed 4-Item Navigation Bar Overlay -->
-            <div
-                class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-purple-100/80 px-4 py-3 flex justify-between items-center z-20 rounded-b-[40px]">
-
-                <!-- Home Tab (Changed to <a> tag) -->
-                <a href="index.html"
-                    class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
-                    <i class="fa-solid fa-house text-base mb-1"></i>
-                    <span class="text-[10px] font-medium">Home</span>
-                </a>
-
-                <!-- Spotter Tab (Active state highlighted) -->
-                <a href="spotter.html"
-                    class="flex flex-col items-center flex-1 py-1 text-brand-purple">
-                    <div class="bg-brand-purple-light px-4 py-1 rounded-full mb-1">
-                        <i class="fa-solid fa-bullseye text-sm"></i>
-                    </div>
-                    <span class="text-[10px] font-bold">Spotter</span>
-                </a>
-
-                <!-- Ally Network Tab -->
-                <a href="ally-network.html"
-                    class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
-                    <i class="fa-regular fa-comments text-base mb-1"></i>
-                    <span class="text-[10px] font-medium">Ally</span>
-                </a>
-
-                <!-- Profile Wallet Tab -->
-                <a href="profile.html"
-                    class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
-                    <i class="fa-regular fa-user text-base mb-1"></i>
-                    <span class="text-[10px] font-medium">Profile</span>
-                </a>
-
+            <!-- Informational Accent Footer Label -->
+            <div class="text-center">
+                <span class="text-[10px] font-bold tracking-wider text-purple-400 uppercase bg-purple-50 px-3 py-1.5 rounded-full border border-purple-100">
+                    ⚡ Resets Daily at 00:00
+                </span>
             </div>
 
         </div>
 
-</body>
+        <!-- System Fixed Navigation Bar -->
+        <div class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-purple-100/80 px-4 py-3 flex justify-between items-center z-20 rounded-b-[40px]">
+            <a href="index.html" class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-solid fa-house text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Home</span>
+            </a>
+            <a href="spotter.html" class="flex flex-col items-center flex-1 py-1 text-brand-purple">
+                <div class="bg-brand-purple-light px-4 py-1 rounded-full mb-1">
+                    <i class="fa-solid fa-bullseye text-sm"></i>
+                </div>
+                <span class="text-[10px] font-bold">Spotter</span>
+            </a>
+            <button class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-regular fa-comments text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Ally</span>
+            </button>
+            <button class="flex flex-col items-center flex-1 py-1 text-gray-400 hover:text-purple-500 transition-colors">
+                <i class="fa-regular fa-user text-base mb-1"></i>
+                <span class="text-[10px] font-medium">Profile</span>
+            </button>
+        </div>
 
+    </div>
+</body>
 </html>
